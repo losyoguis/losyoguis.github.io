@@ -1,13 +1,37 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@losyoguis 
+Learn Git and GitHub without any code!
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+
+
+losyoguis
+/
+losyoguis.github.io
+1
+00
+ Code Issues 0 Pull requests 0 Actions Projects 0 Wiki Security Insights Settings
+losyoguis.github.io/portafolio/Autor.html
+@losyoguis losyoguis inc
+230cc44 5 minutes ago
+763 lines (634 sloc)  34.5 KB
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Juan Carlos Blandón Vargas</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-	<link rel="stylesheet" href="css/fontello.css">
-	<link rel="stylesheet" href="css/estilos.css">
+	<link rel="stylesheet" href="../css/fontello.css">
+	<link rel="stylesheet" href="../css/estilos.css">
 	<link rel="icon" href="img/Fovicon/Yoguis3.ico">
 </head>
 <body>
@@ -672,7 +696,6 @@
 				</p>
 				
 			</div>
-
 		</div>
 			
 -->	
@@ -761,3 +784,15 @@
 	<script src="js/scripts.js"></script>
 </body>
 </html>
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
