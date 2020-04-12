@@ -1,0 +1,4265 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta name="authoring-tool" content="Adobe_Animate_CC">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<title>App Spelling Yoguis Bee</title>
+		<link rel="icon" href="../img/Fovicon/Yoguis3.ico">
+		
+		<style>
+			html {
+				font-size: 16px;
+				/*
+				@media screen and (max-width: 484px)
+				{
+					font-size: 12px;
+				}
+				@media screen and (max-width: 992px)
+				{
+					font-size: 2rem;
+				}
+				*/
+			}
+			
+			body{
+				background-color:#f8f8f8;
+				font-family: sans-serif;
+			}			
+			
+			h1 {
+				font-size: 2rem;
+			}
+			
+			h2 {
+				font-size: 1.2rem;
+			}
+			
+			p {
+				font-size: .9rem;
+			}
+			
+			.letrapeque {
+				font-size: 11px;
+			}
+			
+		</style>
+		
+		<script>
+			var a = new Audio();
+			a.src = "a.mp3";
+			var b = new Audio();
+			b.src = "b.mp3";
+			var c = new Audio();
+			c.src = "c.mp3";
+			var d = new Audio();
+			d.src = "d.mp3";
+			var e = new Audio();
+			e.src = "e.mp3";
+			var f = new Audio();
+			f.src = "f.mp3";
+			var g = new Audio();
+			g.src = "g.mp3";
+			var h = new Audio();
+			h.src = "h.mp3";
+			var i = new Audio();
+			i.src = "i.mp3";
+			var j = new Audio();
+			j.src = "j.mp3";
+			var k = new Audio();
+			k.src = "k.mp3";
+			var l = new Audio();
+			l.src = "l.mp3";
+			var m = new Audio();
+			m.src = "m.mp3";
+			var n = new Audio();
+			n.src = "n.mp3";
+			var o = new Audio();
+			o.src = "o.mp3";
+			var p = new Audio();
+			p.src = "p.mp3";
+			var q = new Audio();
+			q.src = "q.mp3";
+			var r = new Audio();
+			r.src = "r.mp3";
+			var s = new Audio();
+			s.src = "s.mp3";
+			var t = new Audio();
+			t.src = "t.mp3";
+			var u = new Audio();
+			u.src = "u.mp3";
+			var v = new Audio();
+			v.src = "v.mp3";
+			var w = new Audio();
+			w.src = "w.mp3";
+			var x = new Audio();
+			x.src = "x.mp3";
+			var y = new Audio();
+			y.src = "y.mp3";
+			var z = new Audio();
+			z.src = "z.mp3";
+			
+		</script>
+		
+	<!-- write your code here -->
+<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+<script src="SpellingYoguisBeeabannerhtml.js?1584835100112"></script>
+<script>
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+function init() {
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	var comp=AdobeAn.getComposition("188ECED3B17FF84EBD2BEF7826E84E7E");
+	var lib=comp.getLibrary();
+	handleComplete({},comp);
+}
+function handleComplete(evt,comp) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	exportRoot = new lib.SpellingYoguisBeeabannerhtml();
+	stage = new lib.Stage(canvas);
+	stage.enableMouseOver();	
+	//Registers the "tick" event listener.
+	fnStartAnimation = function() {
+		stage.addChild(exportRoot);
+		createjs.Ticker.setFPS(lib.properties.fps);
+		createjs.Ticker.addEventListener("tick", stage);
+	}	    
+	//Code to support hidpi screens and responsive scaling.
+	function makeResponsive(isResp, respDim, isScale, scaleType) {		
+		var lastW, lastH, lastS=1;		
+		window.addEventListener('resize', resizeCanvas);		
+		resizeCanvas();		
+		function resizeCanvas() {			
+			var w = lib.properties.width, h = lib.properties.height;			
+			var iw = window.innerWidth, ih=window.innerHeight;			
+			var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;			
+			if(isResp) {                
+				if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {                    
+					sRatio = lastS;                
+				}				
+				else if(!isScale) {					
+					if(iw<w || ih<h)						
+						sRatio = Math.min(xRatio, yRatio);				
+				}				
+				else if(scaleType==1) {					
+					sRatio = Math.min(xRatio, yRatio);				
+				}				
+				else if(scaleType==2) {					
+					sRatio = Math.max(xRatio, yRatio);				
+				}			
+			}			
+			canvas.width = w*pRatio*sRatio;			
+			canvas.height = h*pRatio*sRatio;
+			canvas.style.width = dom_overlay_container.style.width = anim_container.style.width =  w*sRatio+'px';				
+			canvas.style.height = anim_container.style.height = dom_overlay_container.style.height = h*sRatio+'px';
+			stage.scaleX = pRatio*sRatio;			
+			stage.scaleY = pRatio*sRatio;			
+			lastW = iw; lastH = ih; lastS = sRatio;            
+			stage.tickOnUpdate = false;            
+			stage.update();            
+			stage.tickOnUpdate = true;		
+		}
+	}
+	makeResponsive(true,'both',false,1);	
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+}
+</script>
+<!-- write your code here -->
+		
+	</head>
+	
+<body onload="init();" style="margin:0px;">
+	
+
+
+
+
+<!--Container Header 1 ok-->
+
+<div class="container">
+	<div class="row m-1">
+		<div class="col">			
+		</div>
+		<div class="col">
+			
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  				<h1>Spelling Yoguis Bee</h1>
+			</button>
+
+	<!-- Modal -->
+				<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">The English Alphabet</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					  </div>
+					  <div class="modal-body">
+						  
+					
+						
+					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  						<div class="btn-group mr-2" role="group" aria-label="First group">
+    						<button type="button" class="btn btn-warning">/ei/</button>
+							<button type="button" class="btn btn-primary"><a onmousedown="a.play()">A</a></button>
+   							<button type="button" class="btn btn-secondary"><a onmousedown="h.play()">H</a></button>
+    						<button type="button" class="btn btn-primary"><a onmousedown="j.play()">J</a></button>
+							<button type="button" class="btn btn-secondary"><a onmousedown="k.play()">K</a></button>
+  						</div> 
+					</div>
+					
+					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  						<div class="btn-group mr-2" role="group" aria-label="First group">
+    						<button type="button" class="btn btn-warning">/i/</button>
+    						<button type="button" class="btn btn-secondary"><a onmousedown="b.play()">B</a></button>
+   							<button type="button" class="btn btn-primary"><a onmousedown="c.play()">C</a></button>
+    						<button type="button" class="btn btn-secondary"><a onmousedown="d.play()">D</a></button>
+							<button type="button" class="btn btn-primary"><a onmousedown="e.play()">E</a></button>
+							<button type="button" class="btn btn-secondary"><a onmousedown="g.play()">G</a></button>
+   							<button type="button" class="btn btn-primary"><a onmousedown="p.play()">P</a></button>
+    						<button type="button" class="btn btn-secondary"><a onmousedown="t.play()">T</a></button>
+							<button type="button" class="btn btn-primary"><a onmousedown="v.play()">V</a></button>
+  						</div>
+					</div>
+						  
+					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  						<div class="btn-group mr-2" role="group" aria-label="First group">
+    						<button type="button" class="btn btn-warning">/eh/</button>
+    						<button type="button" class="btn btn-primary"><a onmousedown="f.play()">F</a></button>
+   							<button type="button" class="btn btn-secondary"><a onmousedown="l.play()">L</a></button>
+    						<button type="button" class="btn btn-primary"><a onmousedown="m.play()">M</a></button>
+							<button type="button" class="btn btn-secondary"><a onmousedown="n.play()">N</a></button>
+							<button type="button" class="btn btn-primary"><a onmousedown="s.play()">S</a></button>
+   							<button type="button" class="btn btn-secondary"><a onmousedown="x.play()">X</a></button>
+    						<button type="button" class="btn btn-primary"><a onmousedown="z.play()">Z</a></button>
+  						</div> 
+					</div>
+					
+					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  						<div class="btn-group mr-2" role="group" aria-label="First group">
+    						<button type="button" class="btn btn-warning">/ai/</button>
+    						<button type="button" class="btn btn-secondary"><a onmousedown="i.play()">I</a></button>
+   							<button type="button" class="btn btn-primary"><a onmousedown="y.play()">Y</a></button>
+   						</div> 
+					</div>
+						  
+					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  						<div class="btn-group mr-2" role="group" aria-label="First group">
+    						<button type="button" class="btn btn-warning">/ou/</button>
+    						<button type="button" class="btn btn-primary"><a onmousedown="o.play()">O</a></button>
+   						</div> 
+					</div>
+						  
+					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  						<div class="btn-group mr-2" role="group" aria-label="First group">
+    						<button type="button" class="btn btn-warning">/u/</button>
+    						<button type="button" class="btn btn-secondary"><a onmousedown="q.play()">Q</a></button>
+   							<button type="button" class="btn btn-primary"><a onmousedown="u.play()">U</a></button>
+    						<button type="button" class="btn btn-secondary"><a onmousedown="w.play()">W</a></button>
+  						</div> 
+					</div>
+					
+					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  						<div class="btn-group mr-2" role="group" aria-label="First group">
+    						<button type="button" class="btn btn-warning">/a/</button>
+    						<button type="button" class="btn btn-primary"><a onmousedown="r.play()">R</a></button>
+   						</div> 
+					</div>					
+						  
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>        
+      					</div>
+    				</div>
+  				</div>
+				</div>
+		</div>
+		<div class="col">			
+		</div>
+	</div>
+</div>
+
+<!-- Fin Container Header 1 ok-->
+
+<!--Container Header 2 ok-->	
+<div class="container" id="containerHeader">	
+	<div class="row mt-2">
+		<div class="col-sm-4" "col-md-4">					
+		</div>
+		<div class="col-sm-4" "col-md-4">					 		
+  			<button class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExamplecontainer1" aria-expanded="false" aria-controls="collapseExample">    								
+				<h2>Learn 158 Irregular Verbs in English</h2>	
+  			</button>										
+		</div>
+		<div class="col-sm-4" "col-md-4">					
+		</div>
+	</div>
+</div> 
+<!-- Fin Container Header 2 ok-->
+
+
+<div class="collapse" id="collapseExamplecontainer1">	
+<div class="card card-body">
+	
+<!--Container Nav ok-->
+<div class="container-fluid" id="containerNav">	
+	
+		<div class="row">			
+			<div class="col-4">				
+ 			 	<a class="btn btn-primary" data-toggle="collapse" href="#collapseExamplegrupo1" role="button" aria-expanded="false" aria-controls="collapseExample">
+    					Group # 1
+ 			 	</a>				
+			</div>		
+			<div class="col-4">					
+  				<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExamplegrupo2" aria-expanded="false" aria-controls="collapseExample">
+    					Group # 2
+  				</button>				
+			</div>				
+			<div class="col-4">					
+				<a class="btn btn-primary" data-toggle="collapse" href="#collapseExamplegrupo3" role="button" aria-expanded="false" aria-controls="collapseExample">
+    					Group # 3
+ 				</a>				
+			</div>		
+		</div>		
+	
+		<div class="row">
+			<div class="col">
+			</div>
+		</div>		
+</div>
+<!--Fin Container Nav-->
+	
+<!--Container Body ok-->	
+<div class="container" id="containerBody">
+	
+<div class="collapse" id="collapseExamplegrupo1">
+<div class="card card-body">
+<!--Container Grupo1 ok-->
+<div class="container" id="containerGrupo1">
+		
+    <div class="row">
+		<div class="col-12">					
+			<h2>Group # 1: 27 Verbs</h2>
+			<p>Familia verbal: Son los mismos en infinitivo, pasado y participio.</p>
+			<p>All the same.</p>
+		</div>	
+	</div>			
+		
+	<!-- Extra large modal -->
+	<div class="row">
+		<div class="col-sm-12 col-md-6 mb-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl0">Una silaba termina en D</button>
+		</div>
+		<div class="col-sm-12 col-md-6">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Una silaba termina en T</button>
+		</div>
+	</div>
+
+	<div class="modal fade bd-example-modal-xl0" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">D</button>        	
+      		</div>
+						
+					<p class="text-center">Grupo 1: Son los mismos en infinitivo, pasado y participio.</p>
+					<p class="text-center">El patrón que se repite es que es de una silaba y termina el verbo en D.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i2">Read</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Read</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Read</p>					
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i2">Leer</p>
+				</div>
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Bid</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Bid</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Bid</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Ofertar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Rid</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Rid</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Rid</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Deshacer</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Spread</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Spread</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Spread</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Exparcir</p>
+				</div>				
+			</div>	
+			
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+					
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i2">Lead</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Led</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Led</p>					
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i2">Guiar</p>
+				</div>
+			</div>
+				
+    		</div>
+ 		</div>
+	</div>					
+			
+					
+	<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">					
+			<div class="modal-content">					
+									
+			<div class="modal-footer">
+        		<button type="button" class="btn btn-secondary" data-dismiss="modal">T</button>        	
+      		</div>
+					
+				<p class="text-center">Grupo 1: Son los mismos en infinitivo, pasado y participio.</p>
+				<p class="text-center">El patrón que se repite es que es de una silaba y termina el verbo en T.</p>
+						
+    		<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary" "m-5">Mean</p>
+				</div>				
+			</div>
+			
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i0">Hit</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i0">Hit</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i0">Hit</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i0">Golpear</p>
+				</div>				
+			</div>
+			
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i11">Fit</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i11">Fit</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i11">Fit</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i11">Caber</p>
+				</div>
+			</div>
+					
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Quit</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Quit</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Quit</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Abandonar</p>
+				</div>
+			</div>
+					
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Split</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Split</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Split</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Dividir</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Slit</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Slit</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Slit</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Rajar</p>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Bet</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Bet</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Bet</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Apostar</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Let</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Let</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Let</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Permitir</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Set</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Set</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Set</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Fijar</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Wet</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Wet</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Wet</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Mojar</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Cut</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Cut</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Cut</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Cortar</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Put</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Put</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Put</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Poner</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Shut</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Shut</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Shut</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Cerrar</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Thrust</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Thrust</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Thrust</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Introducir</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Burst</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Burst</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Burst</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Reventar</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Hurt</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Hurt</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Hurt</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Herir</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Cost</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Cost</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Cost</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Costarr</p>
+				</div>
+			</div>
+						
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Sweat</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Sweat</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Sweat</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Sudar</p>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Beat</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Beat</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Beat</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Vencer</p>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Cast</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Cast</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Cast</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Lanzar</p>
+				</div>
+			</div>
+			
+						
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+					
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i2">Sit</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Sat</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Sat</p>					
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i2">Sentarse</p>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col pl-4">
+					<p class="letrapeque">Broadcast</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Broadcast</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Broadcast</p>
+				</div>
+				<div class="col pr-4">
+					<p class="letrapeque">Transmitir</p>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Forecast</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Forecast</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Forecast</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Predecir</p>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<p id="significadog1i2">Spit</p>
+				</div>
+				<div class="col">
+					<p id="infinitivog1i2">Spit</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i2">Spit</p>
+				</div>
+				<div class="col pr-4">
+					<p id="participiog1i2">Salibar</p>
+				</div>
+			</div>
+					
+					
+				<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">T</button>        	
+      			</div>						
+						
+  			</div>
+		</div>
+	</div>		
+</div>	
+<!--Fin Container Grupo1-->
+</div>
+</div>	
+	
+<div class="collapse" id="collapseExamplegrupo2">
+<div class="card card-body">
+<!--Container Grupo2 ok-->
+<div class="container" id="containerGrupo2">
+	
+    <div class="row">
+		<div class="col">
+			<h2>Group # 2: 74 Verbs</h2>
+			<p>Familia verbal: El pasado y el participio son los mismos.</p>
+		</div>
+	</div>
+	
+	<!-- Extra large modal -->
+	<div class="row">
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlAND">AND</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlEND">END</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlIND">IND</button>
+		</div>
+	</div>
+	
+	<div class="row">	
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlING">ING</button>
+		</div>	
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlOLD">OLD</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlELL">ELL</button>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlAY">AY</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlEA">EA</button>
+		</div>	
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlEE">EE</button>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlI">I</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlU">U</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlOUGHT">OUGHT</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-3 col-m-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlNRG2">N/R</button>
+		</div>
+	</div>
+
+	<div class="modal fade bd-example-modal-xlAND" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">AND</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">OOD</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">OOD</button> 
+      		</div>
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+					<p class="text-center">Verbo terminado en AND.</p>	
+					
+					
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Stand</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Stood</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Stood</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Estar de pie</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p class="letrapeque">Understand</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Understood</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Understood</p>
+				</div>
+				<div class="col pr-4">
+					<p class="letrapeque">Entender</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p class="letrapeque">Overstand</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Overstood</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Overstood</p>
+				</div>
+				<div class="col pr-4">
+					<p class="letrapeque">Sobreentender</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p class="letrapeque">Withstand</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Withstood</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Withstood</p>
+				</div>
+				<div class="col pr-4">
+					<p class="letrapeque">Resisistir</p>
+				</div>				
+			</div>	
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlEND" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">END</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">ENT</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">ENT</button> 
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+				<p class="text-center">Verbos terminados en END</p>
+					
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Send</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Sent</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Sent</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Enviar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Spend</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Spent</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Spent</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Gastar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Bend</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Bent</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Bent</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Doblar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Blend</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Blent</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Blent</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Mezclar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Lend</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Lent</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Lent</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Prestar</p>
+				</div>				
+			</div>		
+				
+			
+				
+    		</div>
+ 		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-xlIND" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">IND</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">OUND</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">OUND</button>
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+					<p class="text-center">Verbos terminados en IND</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Find</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Found</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Found</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Encontrar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Grind</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Ground</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Ground</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Moler</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Bind</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Bound</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Bound</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Atar</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Unbind</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Unbound</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Unbound</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Desatar</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Wind</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Wound</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Wound</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Enrollar</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p class="letrapeque">Unwind</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Unwound</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Unwound</p>
+				</div>
+				<div class="col pr-4">
+					<p class="letrapeque">Desenrollar</p>
+				</div>				
+			</div>	
+				
+    		</div>
+ 		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-xlING" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">ING</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">UNG</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">UNG</button> 
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+				<p class="text-center">Verbos terminados en ING.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Cling</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Clung</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Clung</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Aferrarse</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Sting</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Stung</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Stung</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Picar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Swing</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Swung</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Swung</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Balancear</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Wring</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Wrung</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Wrung</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Exprimir</p>
+				</div>				
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Hang</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Hung</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Hung</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Colgar</p>
+				</div>				
+			</div>
+				
+			
+				
+    		</div>
+ 		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-xlOLD" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">OLD</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">ELD</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">ELD</button> 
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+					<p class="text-center">Verbo termina en OLD.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Hold</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Held</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Held</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Sostenerr</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Behold</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Beheld</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Beheld</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Observar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Uphold</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Upheld</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Upheld</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Defender</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Withhold</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Withheld</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Withheld</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Retener</p>
+				</div>				
+			</div>	
+				
+    		</div>
+ 		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-xlELL" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">ELL</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">OLD</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">OLD</button>
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+					<p class="text-center">Verbos termina en ELL.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Sell</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Sold</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Sold</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Vender</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Tell</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Told</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Told</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Contar</p>
+				</div>				
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Spell</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Spelt</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Spelt</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Deletrear</p>
+				</div>				
+			</div>
+				
+			
+				
+    		</div>
+ 		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-xlAY" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">AY</button>   
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">AID</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">AID</button> 
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+					<p class="text-center">Verbos terminan en AY</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Say</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Said</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Said</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Decir</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Pay</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Paid</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Paid</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Pagar</p>
+				</div>				
+			</div>
+			
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Lay</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Laid</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Laid</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Poner</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Inlay</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Inlaid</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Inlaid</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Embutir</p>
+				</div>				
+			</div>
+			
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Stay</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Stayed</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Stayed</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Quedarse</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Play</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Played</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Played</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Jugar</p>
+				</div>				
+			</div>
+				
+    		</div>
+ 		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-xlEA" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">EA</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">EA+d/t</button>  
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">EA+d/t</button>  
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+					<p class="text-center">Estos verbos tienen EA y terminan en alguna de estas consonates(P-L-M-N-R)</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Leap</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Leapt</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Leapt</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Salto</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Deal</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Dealt</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Dealt</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Distribuir</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Dream</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Dreamt</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Dreamt</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Soñar</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Learn</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Learnt</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Learnt</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Aprender</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Lean</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Leant</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Leant</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Apoyarse</p>
+				</div>				
+			</div>
+						
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Mean</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Meant</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Meant</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Significar</p>
+				</div>				
+			</div>			
+			
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Hear</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Heard</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Heard</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Oir</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Lead</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Led</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Led</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Guiar</p>
+				</div>				
+			</div>	
+				
+    		</div>
+ 		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-xlEE" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">EE</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">E</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">E</button> 
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+					<p class="text-center">Estos verbos tienen EE y terminan en alguna de estas consonates(T-D-P-L)</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Meet</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Met</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Met</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Conocer</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Bleed</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Bled</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Bled</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Sangrar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Breed</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Bred</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Bred</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Criar</p>
+				</div>				
+			</div>
+			
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Feed</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Fed</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Fed</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Alimentar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Speed</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Sped</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Sped</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Acelerar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Keep</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Kept</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Kept</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Guardar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Sleep</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Slept</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Slept</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Dormir</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Sweep</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Swept</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Swept</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Barrer</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Weep</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Wept</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Wept</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Llorar</p>
+				</div>				
+			</div>
+				
+							
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Creep</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Crept</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Crept</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Arrastrarse</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Feel</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Felt</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Felt</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Sentir</p>
+				</div>				
+			</div>
+				
+			
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Kneel</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Knelt</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Knelt</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Arrodillarse</p>
+				</div>				
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>				
+			
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Flee</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Fled</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Fled</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Escapar</p>
+				</div>				
+			</div>
+				
+				
+    		</div>
+ 		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-xlI" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">I</button>  
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">U</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">U</button> 
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+					<p class="text-center">lA I cambia por U</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+			
+						
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Dig</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Dug</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Dug</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Cavar</p>
+				</div>				
+			</div>
+			
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Slink</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Slunk</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Slunk</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Escabullirse</p>
+				</div>				
+			</div>		
+				
+						
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Stick</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Stuck</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Stuck</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Pegar</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Strike</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Struck</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Struck</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Atacar</p>
+				</div>				
+			</div>	
+			
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Spin</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Spun</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Spun</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Dar vueltas</p>
+				</div>				
+			</div>
+			
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Win</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Won</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Won</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Ganar</p>
+				</div>				
+			</div>
+			
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Shine</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Shone</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Shone</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Brillar</p>
+				</div>				
+			</div>
+				
+    		</div>
+ 		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-xlU" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">U</button>  
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">T</button>  
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">T</button>  
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+					<p class="text-center">Pronunciación U.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Lose</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Lost</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Lost</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Perder</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Shoot</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Shot</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Shot</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Disparar</p>
+				</div>				
+			</div>	
+				
+    		</div>
+ 		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-xlOUGHT" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">Ought</button>        	
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+					<p class="text-center">Terminan en Ought/Aught.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Bring</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Brought</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Brought</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Traer</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Buy</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Bought</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Bought</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Comprar</p>
+				</div>				
+			</div>
+				
+			
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Catch</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Caught</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Caught</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Coger</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Fight</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Fought</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Fought</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Pelear</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Seek</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Sought</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Sought</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Buscar</p>
+				</div>				
+			</div>	
+				
+							
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Think</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Thought</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Thought</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Pensar</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Teach</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Taught</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Taught</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Enseñar</p>
+				</div>				
+			</div>
+	
+				
+    		</div>
+ 		</div>
+	</div>
+	
+	<div class="modal fade bd-example-modal-xlNRG2" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">N/R</button>        	
+      		</div>
+						
+					<p class="text-center">Grupo 2: El pasado y el participio son los mismos.</p>
+					<p class="text-center">No Regla</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Have</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Had</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Had</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Tener</p>
+				</div>				
+			</div>
+			
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Make</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Made</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Made</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Hacer</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Awake</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Awoke</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Awoke</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Despertarse</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Build</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Built</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Built</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Construir</p>
+				</div>				
+			</div>				
+			
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Leave</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Left</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Left</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Salir</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Light</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Lit</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Lit</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Encender</p>
+				</div>				
+			</div>				
+			
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Slide</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Slid</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Slid</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Resbalar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Spit</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Spat</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Spat</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Escupir</p>
+				</div>				
+			</div>
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+ 	</div>		
+<!--Fin Container Grupo2-->
+	</div>	
+</div>
+	
+<div class="collapse" id="collapseExamplegrupo3">
+<div class="card card-body">
+<!--Container Grupo3 ok-->
+<div class="container" id="containerGrupo3">	
+	
+    	<div class="row">
+			<div class="col">
+				<h2>Group # 3: 55 Verbs</h2>
+				<p>Familia verbal: El infinitivo, el pasado y el participio son diferentes.</p>
+			</div>
+		</div>
+	
+		<!-- Extra large modal -->
+	<!-- Extra large modal -->
+	<div class="row">
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlGET">GET</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlGIVE">GIVE</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlSEE">SEE</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlCOME">COME</button>
+		</div>		
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlTAKE">TAKE</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlINGG3">ING</button>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlIcE">IcE</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlINK">INK</button>
+		</div>	
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlA-U">A-U</button>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlEAR">EAR</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlEAG3">EA</button>
+		</div>
+		<div class="col-3 col-md-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlOWAW">OW/AW</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-3 col-m-2 m-2">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xlNRG3">N/R</button>
+		</div>
+	</div>
+
+	<div class="modal fade bd-example-modal-xlGET" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">GET</button>  
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">GOT</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">GOTTEN</button>
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Get</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Got</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Gotten</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Conseguir</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Forget</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Forgot</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Forgotten</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Olvidar</p>
+				</div>				
+			</div>	
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlGIVE" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">GIVE</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">GAVE</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">GIVEN</button> 
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Give</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Gave</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Given</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Dar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Forgive</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Forgave</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Forgiven</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Perdonar</p>
+				</div>				
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Forbid</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Forbade</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Forbidden</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Prohibir</p>
+				</div>				
+			</div>	
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlSEE" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">SEE</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">SAW</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">SEEN</button> 
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					<p class="text-center">.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">See</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Saw</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Seen</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Ver</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Foresee</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Foresaw</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Foreseen</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Prever</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p class="letrapeque">Oversee</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Oversaw</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Overseen</p>
+				</div>
+				<div class="col pr-4">
+					<p class="letrapeque">Supervisar</p>
+				</div>				
+			</div>
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlCOME" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">COME</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">CAME</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">COME</button>
+      		</div>
+						
+					<p class="text-center">Grupo3: El infinitivo, el pasado y el participio son diferentes.</p>
+					<p class="text-center">.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Come</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Came</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Come</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Venir</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Become</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Became</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Become</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Convertirse</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p class="letrapeque">Overcome</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Overcame</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Overcome</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Superar</p>
+				</div>				
+			</div>	
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlTAKE" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">AKE</button>   
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">OOK</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">AKEN</button> 
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Take</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Took</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Taken</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Tomar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p class="letrapeque">Mistake</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Mistook</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Mistaken</p>
+				</div>
+				<div class="col pr-4">
+					<p class="letrapeque">Equivocarse</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p class="letrapeque">Undertake</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Undertook</p>
+				</div>
+				<div class="col">
+					<p class="letrapeque">Undertaken</p>
+				</div>
+				<div class="col pr-4">
+					<p class="letrapeque">Emprender</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Partake</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Partook</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Partaken</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Participar</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Shake</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Shook</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Shaken</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Sacudir</p>
+				</div>				
+			</div>	
+				
+			
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlINGG3" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">ING</button>        	
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					<p class="text-center">.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+							
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Ring</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Rang</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Rung</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Sonar</p>
+				</div>				
+			</div>	
+			
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Sing</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Sang</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Sung</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Cantar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Spring</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Sprang</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Sprung</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Florecer</p>
+				</div>				
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Begin</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Began</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Begun</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Comenzar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Swim</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Swam</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Swum</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Nadar</p>
+				</div>				
+			</div>
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlIcE" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">IcE</button>        	
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					<p class="text-center">El verbo termina en I consonante E</p>
+					<p class="text-center">Si la consonante es D ó T se dobletean</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+							
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Write</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Wrote</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Written</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Escribir</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Smite</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Smote</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Smitten</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Golpear</p>
+				</div>				
+			</div>
+				
+			
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Ride</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Rode</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Ridden</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Cabalgar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Stride</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Strode</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Stridden</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Zancadas</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Slide</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Slid</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Slidden</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Deslizarse</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Drive</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Drove</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Driven</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Conducir</p>
+				</div>				
+			</div>
+				
+			
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Rise</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Rose</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Risen</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Levantar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Arise</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Arose</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Arisen</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Surgir</p>
+				</div>				
+			</div>
+				
+								
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Strive</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Strove</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Striven</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Esforzarse</p>
+				</div>				
+			</div>				
+				
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Bite</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Bit</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Bitten</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Morder</p>
+				</div>				
+			</div>
+											
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Hide</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Hid</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Hidden</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Ocultar</p>
+				</div>				
+			</div>
+				
+				
+									
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlINK" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">INK</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">ANK</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">UNK</button>   
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					<p class="text-center">El verbo termina en INK</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Drink</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Drank</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Drunk</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Beber</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Sink</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Sank</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Sunk</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Hundir</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Stink</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Stank</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Stunk</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Oler mal</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Shrink</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Shrank</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Shrunk</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Encoger</p>
+				</div>				
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Run</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Ran</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Run</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Correr</p>
+				</div>				
+			</div>
+				
+			
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlA-U" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">A-U</button>        	
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					<p class="text-center">.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Run</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Ran</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Run</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Correr</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Swim</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Swam</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Swum</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Nadar</p>
+				</div>				
+			</div>	
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlEAR" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">EAR</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">ORE</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">ORN</button> 
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					<p class="text-center">.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Wear</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Wore</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Worn</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Usar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Swear</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Swore</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Sworn</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Jurar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Bear</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Bore</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Born</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Aguantar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Tear</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Tore</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Torn</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Rasgar</p>
+				</div>				
+			</div>
+				
+						
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlEAG3" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">EA</button>        	
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					<p class="text-center">.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Speak</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Spoke</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Spoken</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Hablar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Steal</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Stole</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Stolen</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Robar</p>
+				</div>				
+			</div>
+				
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Break</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Broke</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Broken</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Romper</p>
+				</div>				
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Wake</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Woke</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Woken</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Despertar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Choose</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Chose</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Chosen</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Elegir</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Freeze</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Froze</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Frozen</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Congelar</p>
+				</div>				
+			</div>
+							
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlOWAW" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">AW/OW</button>  
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">EW</button> 
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">AWN/OWN</button> 
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					<p class="text-center">.</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Draw</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Drew</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Drawn</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Dibujar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p class="letrapeque">Overdraw</p>
+				</div>
+				<div class="col-3">
+					<p class="letrapeque">Overdrew</p>
+				</div>
+				<div class="col-3">
+					<p class="letrapeque">Overdrawn</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Sobregirar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Withdraw</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Withdrew</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Withdrawn</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Retirar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Know</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Knew</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Known</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Saber</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Blow</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Blew</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Blown</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Solplar</p>
+				</div>				
+			</div>
+				
+							
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Grow</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Grew</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Grown</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Crecer</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Throw</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Threw</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Thrown</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Lanzar</p>
+				</div>				
+			</div>
+				
+			<div class="row">
+				<div class="col pl-4">
+					<h5>Exception</h5>
+				</div>
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Fly</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Flew</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Flown</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Volar</p>
+				</div>				
+			</div>
+				
+			
+				
+    		</div>
+ 		</div>
+	</div>	
+	
+	<div class="modal fade bd-example-modal-xlNRG3" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-xl" role="document">
+    		<div class="modal-content">
+				
+			<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">N/R</button>        	
+      		</div>
+						
+					<p class="text-center">Grupo 3: El infinitivo, el pasado y el participio son diferentes.</p>
+					<p class="text-center">No Regla</p>
+						
+			<div class="row">				
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-danger">Infinitive</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-warning">Past</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-dark">Participle</p>
+				</div>
+				<div class="col-3">
+					<p class="text-center badge badge-pill badge-secondary">Mean</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Do</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Did</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Done</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Hacer</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Undo</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Undid</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Undone</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Deshacer</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Overdo</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Overdid</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Overdone</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Exagerar</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Go</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Went</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Gone</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Ir</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p class="letrapeque">Undergo</p>
+				</div>
+				<div class="col-3">
+					<p class="letrapeque">Underwent</p>
+				</div>
+				<div class="col-3">
+					<p class="letrapeque">Undergone</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p class="letrapeque">Someterse</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Fall</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">Fell</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Fallen</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Caer</p>
+				</div>				
+			</div>	
+				
+			<div class="row">				
+				<div class="col-3 pl-4">
+					<p id="infinitivog1i">Eat</p>
+				</div>
+				<div class="col-3">
+					<p id="pasadog1i">Ate</p>
+				</div>
+				<div class="col-3">
+					<p id="participiog1i">Eaten</p>
+				</div>
+				<div class="col-3 pr-4">
+					<p id="significadog1i">Comer</p>
+				</div>				
+			</div>
+				
+			<div class="row">				
+				<div class="col pl-4">
+					<p id="infinitivog1i1">Be</p>
+				</div>
+				<div class="col">
+					<p id="pasadog1i1">was/were</p>
+				</div>
+				<div class="col">
+					<p id="participiog1i1">Been</p>
+				</div>
+				<div class="col pr-4">
+					<p id="significadog1i1">Estar/Ser</p>
+				</div>				
+			</div>	
+				
+			
+    		</div>
+ 		</div>
+	</div>	
+			
+</div>
+ 	
+<!--Fin Container Grupo3-->
+</div>
+</div>
+	
+<hr>
+	
+<!--Container Video ok-->	
+<div class="container" id="containerVideo">
+	
+	<div class="row">
+		<div class="col-12 m-1">
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdropapp">
+  				Video app
+			</button>
+		</div>
+		<div class="col-12 m-1">
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdropsp">
+  				Videos Spelling Yoguis Bee 
+			</button>
+		</div>
+		<div class="col-12 m-1">
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdroplinks">
+  				Links
+			</button>
+		</div>
+	</div>	
+				
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdropapp" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+				
+     			<div class="modal-header">
+        			<h5 class="modal-title" id="staticBackdropLabel">Video app Irregular Verbs</h5>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         				 <span aria-hidden="true">&times;</span>
+        			</button>
+     			</div>
+		
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-12">					  
+        					<div class="embed-responsive embed-responsive-21by9">
+  								<iframe width="560" height="315" src="https://www.youtube.com/embed/tETVgL-UGMI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							</div>
+							<p>Esta aplicación se basa en el video de fastbraintv</p>
+      					</div>
+					</div>
+				</div>				
+		
+      			<div class="modal-footer">
+       				 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+     			</div>
+					
+   			 </div>
+  		</div>
+	</div>
+	
+	
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdropsp" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+				
+     			<div class="modal-header">
+        			<h5 class="modal-title" id="staticBackdropLabel">Videos Spelling Yoguis Bee</h5>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         				 <span aria-hidden="true">&times;</span>
+        			</button>
+     			</div>
+		
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-12">					  
+        					<div class="embed-responsive embed-responsive-21by9">
+  								<iframe width="560" height="315" src="https://www.youtube.com/embed/PnNcEBcw7_k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							</div>
+							<p>I Spelling Yoguis Bee 2018</p>
+      					</div>
+						<div class="col-12">					  
+        					<div class="embed-responsive embed-responsive-21by9">
+  								<iframe width="560" height="315" src="https://www.youtube.com/embed/BSTDrMHG3Wc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							</div>
+							<p>II Spelling Yoguis Bee 2019</p>
+      					</div>
+					</div>
+				</div>				
+		
+      			<div class="modal-footer">
+       				 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+     			</div>
+					
+   			 </div>
+  		</div>
+	</div>
+	
+</div>
+<!--Fin Container Video-->
+	
+<!--Container Footer -->	
+<div class="container" id="containerFooter">
+	<hr>	
+				
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdroplinks" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+				
+     			<div class="modal-header">
+        			<h5 class="modal-title" id="staticBackdropLabellinks">Links</h5>
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         				 <span aria-hidden="true">&times;</span>
+        			</button>
+     			</div>
+		
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12 m-1">
+							<button type="button" class="btn btn-outline-primary"><a href="http://losyoguis.com/festivales/spelling.php" target="_blank">Spelling Yoguis Bee</a></button>
+						</div>
+						
+						<div class="col-sm-12 m-1">
+							<button type="button" class="btn btn-outline-primary"><a href="https://www.facebook.com/SpellingYoguisBee/?modal=admin_todo_tour" target="_blank">face Spelling Yoguis Bee</a></button>
+						</div>
+						
+						<div class="col-sm-12 m-1">
+							<button type="button" class="btn btn-outline-primary"><a href="http://losyoguis.com/index.php" target="_blank">www.losyoguis.com</a></button>
+						</div>
+						
+					</div>					
+				</div>				
+		
+      			<div class="modal-footer">
+       				 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+     			</div>
+					
+   			 </div>
+  		</div>
+	</div>
+	
+	
+</div>
+<!--Fin Container Footer-->
+	
+</div>
+<!--Fin Container Body-->
+	
+</div>
+</div>
+	
+	
+	<!-- Container Animación 1-->
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+			
+	<div id="animation_container" style="background-color:rgba(248, 248, 248, 1.00); width:900px; height:250px">
+		<canvas id="canvas" width="900" height="250" style="position: absolute; display: block; background-color:rgba(248, 248, 248, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:900px; height:250px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+	</div>
+			
+			
+	  </div>
+		
+			
+		</div>
+	</div>
+</div>
+<!-- Fin Container Animación 1-->
+	
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/jsspellingYoguisBee.js"></script>
+	
+</body>
+</html>
