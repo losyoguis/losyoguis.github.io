@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/estilos.css">
+	<title>Yoguiscoin-Videos</title>	
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="icon" href="../img/Fovicon/Yoguis3.ico">
+	
+	
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-6 col-lg-3">	
+			<nav class="nav fixed-top bg-dark d-flex justify-content-center">			
+				<a href="../index.php" class="nav-link">Los Yoguis</a>
+				<a href="../Fase_1.php" class="nav-link">Fase I</a>
+				<a href="../Fase_2.php" class="nav-link">Fase II</a>
+		   	    <a href="../Fase_3.php" class="nav-link">Fase III</a>
+				<a href="../Fase_4.php" class="nav-link">Fase IV</a>
+				<a href="../otras/Capacitacion.php" class="nav-link">Cursos</a>
+				<a href="../SaladeCine.php" class="nav-link">Sala de Cine</a>
+				<a href="../Emisora.php" class="nav-link">Emisora</a>
+				<a href="../apoyo/gracias.php" class="nav-link">Apoyo</a>
+				<a href="../portafolio/Autor.php" class="nav-link">Facilitador</a>
+			</nav>
+			</div>
+		</div>
+		<div>.</div>
+		<header class="row widgets justify-content-between">
+			<div class="col-12 col-md-12 col-lg-12">
+				<h1> YC Yoguis - Coin</h1>
+				<H2>Gamificación educativa: El Trading</H2>
+				<div>
+					<p>Asignatura: Tecnologia e Informatica - Emprendimiento.</p>
+					<p>Tema: Inversiones por Internet</p>
+					<p>I.E Manuel J. Betancur.</p>				
+					  
+				</div>			
+			</div>			
+		</header>
+		
+		
+		<div class="container">
+				<div class="row">
+	
+				  <a href="yc.html" class="btn btn-primary my-2">El Yoguiscoin</a>
+					<a href="mejortrader.html" class="btn btn-secondary my-2">Mejor Trader</a>
+					<a href="graficas.html" class="btn btn-primary my-2">Analisis Técnico</a>
+					<a href="calendario.html" class="btn btn-secondary my-2">Analisis Fundamental</a>
+					<a href="indicadores.html" class="btn btn-primary my-2">Indicadores</a>
+					<a href="blockchain.html" class="btn btn-primary my-2">Blockchain</a>
+					<a href="videos.html" class="btn btn-primary my-2">Videos</a>
+					
+				
+		</div>
+						
+	
+		<header class="row">
+			<div class="col">
+				<h1>Aplicación</h1>
+				<iframe width="100%" height= "1800px" src= "https://docs.google.com/forms/d/e/1FAIpQLSd-ykd75W3Vf_dVGYNH8rtIH2KXTazmihCyzbgsxHFM1ljQ_Q/viewform?embedded=true" width="640" height="1401" frameborder="0" marginheight="0" marginwidth="0"> </iframe></div>	
+			
+		</header>
+	
+	<body ng-app="BlockExplorer">
+	<div class="container" ng-controller="MainController">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				<h1 id="page-title">Blockchain -Yoguis Coin</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<form ng-submit="search(searchValue)">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="searchValue">
+					</div>
+					<div class="form-group">
+						<select class="form-control" ng-model="searchType">
+							<option value="block">Block Hash</option>
+							<option value="transaction">Transaction ID</option>
+							<option value="address">Address</option>
+						</select>
+					</div>
+					<button
+						type="submit"
+						class="btn btn-primary margin-auto btn-search">
+							Search
+					</button>
+					<p ng-if="!block && !transaction && !addressData && initialSearchMade" class="no-data-text">
+						No data found for search.
+					</p>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+
+				<!-- 'display block' table -->
+				<h3 class="table-title" ng-if="block">Block</h3>
+				<table class="table table-striped" ng-if="block">
+					<tbody>
+						<tr>	
+							<td class="bold">Block Hash</td>
+							<td>{{ block.hash }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Index</td>
+							<td>{{ block.index }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Time Stamp</td>
+							<td>{{ block.timestamp }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Nonce</td>
+							<td>{{ block.nonce }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Previous Hash</td>
+							<td>{{ block.previousBlockHash }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Number Transactions</td>
+							<td>{{ block.transactions.length }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- end 'display block' table -->
+
+				<!-- 'display transaction' table -->
+				<h3 class="table-title" ng-if="transaction">Transaction</h3>
+				<table class="table table-striped" ng-if="transaction">
+					<tbody>
+						<tr>	
+							<td class="bold">Sender</td>
+							<td>{{ transaction.sender }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Recipient</td>
+							<td>{{ transaction.recipient }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Amount</td>
+							<td>{{ transaction.amount }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- end 'display transaction' table -->
+
+				<!-- 'display address' table -->
+				<h3 class="table-title" ng-if="addressData">Address</h3>
+				<p id="balance-text" ng-if="addressData">(Balance: {{ addressData.addressBalance }})</p>
+				<table class="table table-striped" ng-if="addressData">
+					<thead>
+						<tr>
+							<th scope="col">Sender</th>
+							<th scope="col">Recipient</th>
+							<th scope="col">Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="transaction in addressData.addressTransactions">
+							<td>{{ transaction.sender }}</td>
+							<td>{{ transaction.recipient }}</td>
+							<td>{{ transaction.amount }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- end 'display address' table -->
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+		window.app = angular.module('BlockExplorer', []);
+
+		app.controller('MainController', function($scope, $http) {
+			$scope.block = null;
+			$scope.transaction = null;
+			$scope.addressData = null;
+			$scope.initialSearchMade = false;
+
+			$scope.fetchBlock = function(blockHash) {
+				$http.get(`/block/${blockHash}`)
+				.then(response => {
+					$scope.block = response.data.block;
+					$scope.transaction = null;
+					$scope.addressData = null;
+				});
+			};
+
+			$scope.fetchTransaction = function(transactionId) {
+				$http.get(`/transaction/${transactionId}`)
+				.then(response => {
+					$scope.transaction = response.data.transaction;
+					$scope.block = null;
+					$scope.addressData = null;
+				});				
+			};
+
+			$scope.fetchAddressData = function(address) {
+				$http.get(`/address/${address}`)
+				.then(response => {
+					$scope.addressData = response.data.addressData;
+					if (!$scope.addressData.addressTransactions.length) $scope
+						.addressData = null;
+					$scope.block = null;
+					$scope.transaction = null;
+				});				
+			};
+
+			$scope.search = function(searchValue) {
+				$scope.initialSearchMade = true;
+				if ($scope.searchType === 'block') {
+					$scope.fetchBlock(searchValue);
+				}
+				else if ($scope.searchType === 'transaction') {
+					$scope.fetchTransaction(searchValue);
+				}
+				else if ($scope.searchType === 'address') {
+					$scope.fetchAddressData(searchValue);
+				}
+			};
+
+		});
+	</script>
+
+	<style type="text/css">
+		html, body {
+			min-height: 100vh;
+			background-color: #e8e8e8;
+		}
+		.container {
+			padding-top: 50px;
+			padding-bottom: 50px;
+		}
+		#page-title {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+		.table-title {
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		.table {
+			background-color: #ffffff;
+			box-shadow: 2px 2px 15px -3px rgba(0,0,0,0.75);
+		}
+		#balance-text {
+			text-align: center;
+			margin-top: -20px;
+			margin-bottom: 30px;
+		}
+		.margin-auto {
+			margin: auto;
+			display: block;
+		}
+		.btn-search {
+			margin-bottom: 50px;
+		}
+		.bold {
+			font-weight: 700;
+		}
+		.no-data-text {
+			color: red;
+			text-align: center;
+		}
+	</style>
+		
+		<header class="row">
+			<div class="col">
+				<h1>Libro de Registro</h1>
+				<div> <iframe width="100%" height="480px" frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQ5lVxr_2vr6x3OC2FVqK9FterWojvoS1ERQO_qWKscXV7XzKIiyCmsPu89DgyoLI3qS5yBZMWqaUzP/pubhtml?widget=true&amp;headers=false"></iframe></div>
+				
+					
+			</div>
+		</header>
+	
+		
+		<div class="row mt-3">
+			<div class="col">
+				<button class="btn btn-primary" data-toggle="modal" data-target="#fm-modal">Redes Sociales</button>
+				<div class="modal fade" id="fm-modal" tabindex="-1" role="dialog" aria-labelledby="fm-modal" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="">Redes Sociales</h5>
+								<button class="close" data-dismiss="modal" aria-label="Cerrar">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+
+							<div class="modal-body">
+								<ol class="list-unstyled">						
+									
+									<li><a href="https://www.facebook.com/TradersdelJ-356501625035043/?modal=admin_todo_tour" target="_blank">facebook</a></li>
+									<li><a href="https://manuelj.gnomio.com/course/index.php?categoryid=264" target="_blank">Curso en Moodle</a>
+									<p>Entrar como inivitado</p></li>
+									
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+	
+		<div>.</div>
+		
+		<footer class="row widgets justify-content-between">
+			<div class="col-12 col-md-12 col-lg-12">
+				<h1> YC Yoguis - Coin</h1>
+				<H2>Gamificación educativa: El Trading</H2>
+				<p>http://www.iemanueljbetancur.edu.co</p>
+				<p>http://www.losyoguis.com</p>
+			</div>			
+		</footer>		
+		
+		<!--<header class="row">
+			<div class="col">
+				<h1>Calculadora</h1>
+					<form name="calculator">
+						<h3>Pasos para transar YC</h3>
+						<p>
+						<ul>
+							<il>1. Realice ya sea el análisis técnico o fundamnetal.</il>
+							<il>2. Verifique cuanto tiene en saldo.</il>
+							<il>3. Multiplique la cantidad de YC por el precio que usted infiere en el periodo de tiempo atransar.</il>
+							<il>4. Recuerde que no puede invertir mas del 15% de su saldo.</il>
+						</ul>
+						</p>
+						<input type="textfield" name="ans" value="">
+						<br>
+						<input type="button" value="1" onClick="document.calculator.ans.value+='1'">
+						<input type="button" value="2" onClick="document.calculator.ans.value+='2'">
+						<input type="button" value="3" onClick="document.calculator.ans.value+='3'">
+						<input type="button" value="+" onClick="document.calculator.ans.value+='+'">
+						<br>
+						<input type="button" value="4" onClick="document.calculator.ans.value+='4'">
+						<input type="button" value="5" onClick="document.calculator.ans.value+='5'">
+						<input type="button" value="6" onClick="document.calculator.ans.value+='6'">
+						<input type="button" value="-" onClick="document.calculator.ans.value+='-'">
+						<br>
+						<input type="button" value="7" onClick="document.calculator.ans.value+='7'">
+						<input type="button" value="8" onClick="document.calculator.ans.value+='8'">
+						<input type="button" value="9" onClick="document.calculator.ans.value+='9'">
+						<input type="button" value="*" onClick="document.calculator.ans.value+='*'">
+						<br>
+						<input type="button" value="0" onClick="document.calculator.ans.value+='0'">
+						<input type="reset" value="c">
+						<input type="button" value="/" onClick="document.calculator.ans.value+='/'">
+						<input type="button" value="=" onClick="document.calculator.ans.value=eval(document.calculator.ans.value)">
+					</form>
+			</div>			
+		</header> -->
+	
+
+	</div>
+	
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+	
+	
+</html>

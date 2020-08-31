@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/estilos.css">
+	<title>Yoguiscoin-Blockchain</title>	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="icon" href="../img/Fovicon/Yoguis3.ico">
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChartdia);
+	  google.charts.setOnLoadCallback(drawChartdelasemana);
+	  google.charts.setOnLoadCallback(drawChartsemana);
+	  google.charts.setOnLoadCallback(drawChartmes);
+	  google.charts.setOnLoadCallback(drawChartyear);
+
+
+    function drawChartdia() {
+    var data = google.visualization.arrayToDataTable([
+      ['Ene 1', 000, 100, 150, 200],
+      ['Ene 2', 100, 150, 200, 250],
+      ['Ene 3', 105, 200, 250, 300],
+      ['Ene 4', 200, 250, 200, 205],
+		// Treat first row as data as well.
+      ['Ene 5', 200, 200, 200, 250],
+      ['Ene 6', 200, 200, 200, 250],
+		// Treat first row as data as well.
+      ['Ene 7', 100, 200, 200, 250],
+      ['Ene 8', 150, 200, 250, 250],
+      ['Ene 9', 100, 250, 300, 350],
+      ['Ene 10', 250, 300, 250, 300],
+	  ['Ene 11', 200, 250, 200, 250],
+		// Treat first row as data as well.
+      ['Ene 12', 200, 200, 200, 350],
+      ['Ene 13', 200, 200, 200, 350],
+		// Treat first row as data as well.
+      ['Ene 14', 150, 200, 150, 200],
+      ['Ene 15', 100, 150, 200, 200],
+      ['Ene 16', 150, 200, 250, 300],
+      ['Ene 17', 200, 250, 300, 350],
+      ['Ene 18', 250, 300, 370, 400],
+		// Treat first row as data as well.
+      ['Ene 19', 250, 370, 370, 400],
+      ['Ene 20', 250, 370, 370, 400],
+		// Treat first row as data as well.
+	  ['Ene 21', 100, 370, 100, 150],
+      ['Ene 22', 050, 100, 050, 100],
+      ['Ene 23', 000, 050, 100, 150],
+      ['Ene 24', 050, 100, 150, 200],
+      ['Ene 25', 100, 150, 200, 250],
+		// Treat first row as data as well.
+      ['Ene 26', 100, 200, 200, 250],
+      ['Ene 27', 100, 200, 200, 250],
+		// Treat first row as data as well.
+      ['Ene 28', 150, 200, 250, 200],
+      ['Ene 29', 100, 250, 200, 250],
+      ['Ene 30', 100, 200, 150, 200],
+	  ['Ene 31', 100, 150, 200, 250],
+      ['Feb 1', 150, 200, 250, 300],
+		// Treat first row as data as well.
+      ['Feb 2', 150, 250, 250, 300],
+      ['Feb 3', 150, 250, 250, 300],
+		// Treat first row as data as well.
+      ['Feb 4', 250, 250, 200, 250],
+      ['Feb 5', 150, 200, 150, 200],
+      ['Feb 6', 100, 150, 300, 350],
+      ['Feb 7', 250, 300, 350, 400],
+      ['Feb 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Feb 9', 100, 200, 200, 250],
+      ['Feb 10', 100, 200, 200, 250],
+		// Treat first row as data as well.
+	  ['Feb 11', 250, 200, 150, 100],
+      ['Feb 12', 100, 150, 100, 150],
+      ['Feb 13', 050, 100, 150, 200],
+      ['Feb 14', 100, 150, 200, 250],
+      ['Feb 15', 150, 200, 100, 150],
+		// Treat first row as data as well.
+      ['Feb 16', 150, 200, 100, 150],
+      ['Feb 17', 150, 200, 100, 150],
+		// Treat first row as data as well.
+      ['Feb 18', 050, 100, 350, 350],
+      ['Feb 19', 300, 350, 100, 150],
+      ['Feb 20', 050, 100, 150, 200],
+	  ['Feb 21', 100, 150, 200, 250],
+      ['Feb 22', 150, 200, 250, 300],
+		// Treat first row as data as well.
+      ['Feb 23', 150, 250, 250, 300],
+      ['Feb 24', 150, 250, 250, 300],
+		// Treat first row as data as well.
+      ['Feb 25', 150, 250, 250, 300],
+      ['Feb 26', 200, 250, 300, 350],
+      ['Feb 27', 250, 300, 350, 400],
+      ['Feb 28', 300, 350, 100, 150],
+	  ['Mar 1', 050, 100, 150, 200],
+		// Treat first row as data as well.
+      ['Mar 2', 050, 150, 150, 200],
+      ['Mar 3', 050, 150, 150, 200],
+		// Treat first row as data as well.
+      ['Mar 4', 150, 150, 250, 300],
+      ['Mar 5', 200, 250, 300, 305],
+      ['Mar 6', 250, 300, 250, 300],
+      ['Mar 7', 200, 250, 200, 205],
+      ['Mar 8', 150, 200, 150, 200],
+		// Treat first row as data as well.
+      ['Mar 9', 150, 150, 150, 200],
+      ['Mar 10', 150, 150, 150, 200],
+		// Treat first row as data as well.
+	  ['Mar 11', 100, 150, 200, 205],
+      ['Mar 12', 150, 200, 150, 200],
+      ['Mar 13', 100, 150, 200, 205],
+      ['Mar 14', 150, 200, 250, 300],
+      ['Mar 15', 200, 250, 200, 205],
+		// Treat first row as data as well.
+      ['Mar 16', 200, 200, 200, 205],
+      ['Mar 17', 200, 200, 200, 205],
+		// Treat first row as data as well.
+      ['Mar 18', 150, 200, 250, 300],
+      ['Mar 19', 200, 250, 300, 305],
+      ['Mar 20', 250, 300, 250, 300],
+	  ['Mar 21', 200, 250, 200, 205],
+      ['Mar 22', 150, 200, 350, 400],
+		// Treat first row as data as well.
+      ['Mar 23', 150, 350, 350, 400],
+      ['Mar 24', 150, 350, 350, 400],
+		// Treat first row as data as well.
+      ['Mar 25', 150, 200, 250, 300],
+      ['Mar 26', 200, 250, 300, 305],
+      ['Mar 27', 250, 300, 250, 300],
+	  ['Mar 28', 200, 250, 200, 205],
+      ['Mar 29', 150, 200, 350, 400],
+		// Treat first row as data as well. 
+		// Treat first row as data as well.
+      ['Mar 30', 150, 250, 250, 300],
+      ['Mar 31', 150, 250, 250, 300],
+		// Treat first row as data as well.
+      ['Abr 4', 250, 250, 200, 250],
+      ['Abr 5', 150, 200, 150, 200],
+      ['Abr 6', 100, 150, 300, 350],
+      ['Abr 7', 250, 300, 350, 400],
+      ['Abr 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Abr 9', 50, 200, 200, 250],
+      ['Abr 10', 100, 200, 200, 250],
+		// Treat first row as data as well.
+		['Abr 4', 250, 250, 200, 250],
+      ['Abr 5', 150, 200, 150, 200],
+      ['Abr 6', 100, 150, 300, 350],
+      ['Abr 7', 250, 300, 350, 400],
+      ['Abr 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Abr 9', 150, 200, 200, 250],
+      ['Abr 10', 200, 200, 200, 250],
+		// Treat first row as data as well.
+		['Abr 4', 250, 250, 200, 250],
+      ['Abr 5', 200, 200, 150, 200],
+      ['Abr 6', 100, 150, 300, 350],
+      ['Abr 7', 250, 300, 350, 400],
+      ['Abr 8', 100, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Abr 9', 100, 200, 200, 250],
+      ['Abr 10', 100, 200, 200, 250],
+		// Treat first row as data as well.
+		['Abr 4', 250, 250, 200, 250],
+      ['Abr 5', 150, 200, 150, 200],
+      ['Abr 6', 100, 150, 300, 350],
+      ['Abr 7', 250, 300, 350, 400],
+      ['Abr 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Abr 9', 200, 200, 200, 250],
+      ['Abr 10', 100, 200, 200, 250],
+		// Treat first row as data as well.
+		['May 4', 250, 250, 200, 250],
+      ['May 5', 50, 200, 150, 200],
+      ['May 6', 100, 150, 300, 350],
+      ['May 7', 150, 300, 350, 400],
+      ['May 8', 200, 350, 200, 250],
+		// Treat first row as data as well.
+      ['May 9', 100, 200, 200, 250],
+      ['May 10', 50, 200, 200, 250],
+		// Treat first row as data as well.
+		['May 4', 250, 250, 200, 250],
+      ['May 5', 50, 200, 150, 200],
+      ['May 6', 100, 150, 300, 350],
+      ['May 7', 300, 300, 350, 400],
+      ['May 8', 100, 350, 200, 250],
+		// Treat first row as data as well.
+      ['May 9', 100, 200, 200, 250],
+      ['May 10', 100, 200, 200, 250],
+		// Treat first row as data as well
+		['May 4', 250, 250, 200, 250],
+      ['May 5', 150, 200, 150, 200],
+      ['May 6', 100, 150, 300, 350],
+      ['May 7', 250, 300, 350, 400],
+      ['May 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['May 9', 100, 200, 200, 250],
+      ['May 10', 100, 200, 200, 250],
+		// Treat first row as data as well
+		['May 4', 250, 250, 200, 250],
+      ['May 5', 150, 200, 150, 200],
+      ['May 6', 100, 150, 300, 350],
+      ['May 7', 250, 300, 350, 400],
+      ['May 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['May 9', 100, 200, 200, 250],
+      ['May 10', 100, 200, 200, 250],
+		// Treat first row as data as well
+		['May 4', 250, 250, 200, 250],
+      ['May 5', 150, 200, 150, 200],
+      ['May 6', 100, 150, 300, 350],
+      ['May 7', 250, 300, 350, 400],
+      ['May 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['May 9', 100, 200, 200, 250],
+      ['May 10', 100, 200, 200, 250],
+		// Treat first row as data as well
+		['Jun 4', 250, 250, 200, 250],
+      ['Jun 5', 150, 200, 150, 200],
+      ['Jun 6', 100, 150, 300, 350],
+      ['Jun 7', 250, 300, 350, 400],
+      ['Jun 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Jun 9', 100, 200, 200, 250],
+      ['Jun 10', 100, 200, 200, 250],
+		// Treat first row as data as well
+		['Jun 4', 250, 250, 200, 250],
+      ['Jun 5', 150, 200, 150, 200],
+      ['Jun 6', 100, 150, 300, 350],
+      ['Jun 7', 250, 300, 350, 400],
+      ['Jun 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Jun 9', 100, 200, 200, 250],
+      ['Jun 10', 100, 200, 200, 250],
+		// Treat first row as data as well
+		['Jun 4', 250, 250, 200, 250],
+      ['Jun 5', 150, 200, 150, 200],
+      ['Jun 6', 100, 150, 300, 350],
+      ['Jun 7', 250, 300, 350, 400],
+      ['Jun 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Jun 9', 100, 200, 200, 250],
+      ['Jun 10', 100, 200, 200, 250],
+		// Treat first row as data as well
+		['Jun 4', 250, 250, 200, 250],
+      ['Jun 5', 150, 200, 150, 200],
+      ['Jun 6', 100, 150, 300, 350],
+      ['Jun 7', 250, 300, 350, 400],
+      ['Jun 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Jun 9', 100, 200, 200, 250],
+      ['Jun 10', 100, 200, 200, 250],
+		// Treat first row as data as well
+		// Treat first row as data as well
+		['Jul 4', 250, 250, 200, 250],
+      ['Jul 5', 150, 200, 150, 200],
+      ['Jul 6', 100, 150, 300, 350],
+      ['Jul 7', 250, 300, 350, 400],
+      ['Jul 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Jul 9', 100, 200, 200, 250],
+      ['Jul 10', 100, 200, 200, 250],
+		// Treat first row as data as well
+		['Jul 4', 250, 250, 200, 250],
+      ['Jul 5', 150, 200, 150, 200],
+      ['Jul 6', 100, 150, 300, 350],
+      ['Jul 7', 250, 300, 350, 400],
+      ['Jul 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Jul 9', 100, 200, 200, 250],
+      ['Jul 10', 100, 200, 200, 250],
+		// Treat first row as data as well
+		['Jul 4', 250, 250, 200, 250],
+      ['Jul 5', 150, 200, 150, 200],
+      ['Jul 6', 100, 150, 300, 350],
+      ['Jul 7', 250, 300, 350, 400],
+      ['Jul 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Jul 9', 100, 200, 200, 250],
+      ['Jul 10', 100, 200, 200, 250],
+		// Treat first row as data as well
+		['Jul 4', 250, 250, 200, 250],
+      ['Jul 5', 150, 200, 150, 200],
+      ['Jul 6', 100, 150, 300, 350],
+      ['Jul 7', 250, 300, 350, 400],
+      ['Jul 8', 300, 350, 200, 250],
+		// Treat first row as data as well.
+      ['Jul 9', 100, 200, 200, 250],
+      ['Jul 10', 100, 200, 200, 250],
+	
+      
+    ], true);
+
+    var options = {
+      legend:'none'
+    };
+
+    var chartdia = new google.visualization.CandlestickChart(document.getElementById('chartdia_div'));
+
+    chartdia.draw(data, options);
+  }
+		
+    function drawChartdelasemana() {
+    var data = google.visualization.arrayToDataTable([
+      
+      ['Mar 18', 150, 200, 250, 300],
+      ['Mar 19', 200, 250, 300, 350],
+      ['Mar 20', 250, 300, 250, 300],
+	  ['Mar 21', 200, 250, 200, 250],
+      ['Mar 22', 150, 200, 350, 400],
+		// Treat first row as data as well.
+      ['Mar 23', 150, 350, 300, 400],
+      ['Mar 24', 150, 300, 250, 400],
+      ['Mar 25', 150, 250, 350, 400],
+	  ['Mar 26', 150, 350, 150, 400],
+      ['Mar 27', 150, 150, 250, 400],
+      ['Mar 28', 150, 250, 350, 400],
+		['Mar 18', 150, 350, 250, 300],
+      ['Mar 19', 200, 250, 250, 350],
+      ['Mar 20', 250, 250, 150, 300],
+	  ['Mar 21', 200, 150, 250, 250],
+      ['Mar 22', 150, 250, 350, 400],
+		// Treat first row as data as well.
+      ['Mar 23', 150, 350, 350, 400],
+      ['Mar 24', 150, 350, 350, 400],
+      ['Mar 25', 150, 150, 250, 400],
+	  ['Mar 26', 150, 250, 350, 400],
+      ['Mar 27', 150, 350, 4000, 400],
+      ['Mar 28', 150, 400, 350, 400],
+		// Treat first row as data as well.     
+      ], true);
+
+    var options = {legend:'none'};
+
+    var chartdelasemana = new google.visualization.CandlestickChart(document.getElementById('chartdelasemana_div'));
+
+    chartdelasemana.draw(data, options);
+  }
+		
+    function drawChartsemana() {
+    var data = google.visualization.arrayToDataTable([
+      ['01', 000, 100, 200, 300],
+      ['02', 100, 200, 200, 350],
+      ['03', 100, 200, 370, 400],
+      ['04', 000, 370, 200, 250],
+      ['05', 100, 200, 250, 300],
+      ['06', 100, 250, 200, 400],
+      ['07', 050, 200, 100, 250],
+      ['08', 050, 100, 250, 350],
+      ['09', 050, 250, 150, 400],
+      ['10', 150, 150, 150, 350],
+	  ['11', 100, 150, 200, 300],
+      ['12', 150, 200, 350, 400],
+      ['13', 150, 350, 350, 400],
+      ['14', 150, 350, 400, 400],
+      ['15', 150, 400, 350, 400],
+      ['16', 150, 350, 150, 400],
+      ['17', 150, 150, 250, 400],
+      ['18', 150, 250, 350, 400],
+      ['19', 150, 350, 350, 400],
+      ['20', 150, 350, 350, 400],
+	  ['21', 150, 350, 400, 400],
+      ['22', 150, 400, 350, 400],
+      ['23', 150, 350, 150, 400],
+      ['24', 150, 150, 350, 400],
+      ['25', 150, 350, 350, 400],
+      ['26', 150, 350, 350, 400],
+      ['27', 0, 0, 0, 0],
+      ['28', 0, 0, 0, 0],
+      ['29', 0, 0, 0, 0],
+      ['30', 0, 0, 0, 0],
+	  ['31', 0, 0, 0, 0],
+      ['32', 0, 0, 0, 0],
+      ['33', 0, 0, 0, 0],
+      ['34', 0, 0, 0, 0],
+      ['35', 0, 0, 0, 0],
+      ['36', 0, 0, 0, 0],
+      ['37', 0, 0, 0, 0],
+      ['38', 0, 0, 0, 0],
+      ['39', 0, 0, 0, 0],
+      ['40', 0, 0, 0, 0],
+	  ['41', 0, 0, 0, 0],
+      ['42', 0, 0, 0, 0],
+      ['43', 0, 0, 0, 0],
+      ['44', 0, 0, 0, 0],
+      ['45', 0, 0, 0, 0],
+      ['46', 0, 0, 0, 0],
+      ['47', 0, 0, 0, 0],
+      ['48', 0, 0, 0, 0],
+      ['49', 0, 0, 0, 0],
+      ['50', 0, 0, 0, 0],
+      ['51', 0, 0, 0, 0],
+      ['52', 0, 0, 0, 0]
+      // Treat first row as data as well.
+    ], true);
+
+    var options = {
+      legend:'none'
+    };
+
+    var chartsemana = new google.visualization.CandlestickChart(document.getElementById('chartsemana_div'));
+
+    chartsemana.draw(data, options);
+  }
+		
+	function drawChartmes() {
+    var data = google.visualization.arrayToDataTable([
+      ['Ene', 000, 100, 250, 400],
+      ['Feb', 050, 250, 150, 400],
+      ['Mar', 100, 150, 350, 400],
+      ['Abr', 100, 350, 450, 400],
+	  ['May', 100, 450, 250, 400],
+      ['Jun', 100, 250, 350, 400],
+      ['Jul', 100, 350, 350, 400],
+      ['Ago', 0, 0, 0, 0],		  
+      ['Sep', 0, 0, 0, 0],
+      ['Oct', 0, 0, 0, 0],
+      ['Nov', 0, 0, 0, 0],		
+      ['Dic', 0, 0, 0, 0]
+      // Treat first row as data as well.
+    ], true);
+
+    var options = {
+      legend:'none'
+    };
+
+    var chartmes = new google.visualization.CandlestickChart(document.getElementById('chartmes_div'));
+
+    chartmes.draw(data, options);
+  }
+		
+	function drawChartyear() {
+    var data = google.visualization.arrayToDataTable([
+      ['2019', 000, 100, 350, 400],
+      ['2020', 0, 0, 0, 0],
+      ['2021', 0, 0, 0, 0],
+      ['2022', 0, 0, 0, 0],
+	  ['2023', 0, 0, 0, 0],
+      ['2024', 0, 0, 0, 0],
+      ['2025', 0, 0, 0, 0],
+      ['2026', 0, 0, 0, 0],		  
+      ['2027', 0, 0, 0, 0],
+      ['2028', 0, 0, 0, 0],
+      ['2029', 0, 0, 0, 0],		
+      ['2030', 0, 0, 0, 0]
+      // Treat first row as data as well.
+    ], true);
+
+    var options = {
+      legend:'none'
+    };
+
+    var chartyear = new google.visualization.CandlestickChart(document.getElementById('chartyear_div'));
+
+    chartyear.draw(data, options);
+  }
+    
+	
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-6 col-lg-3">	
+			<nav class="nav fixed-top bg-dark d-flex justify-content-center">			
+				<a href="../index.php" class="nav-link">Los Yoguis</a>
+				<a href="../Fase_1.php" class="nav-link">Fase I</a>
+				<a href="../Fase_2.php" class="nav-link">Fase II</a>
+		   	    <a href="../Fase_3.php" class="nav-link">Fase III</a>
+				<a href="../Fase_4.php" class="nav-link">Fase IV</a>
+				<a href="../otras/Capacitacion.php" class="nav-link">Cursos</a>
+				<a href="../SaladeCine.php" class="nav-link">Sala de Cine</a>
+				<a href="../Emisora.php" class="nav-link">Emisora</a>
+				<a href="../apoyo/gracias.php" class="nav-link">Apoyo</a>
+				<a href="../portafolio/Autor.php" class="nav-link">Facilitador</a>
+			</nav>
+			</div>
+		</div>
+		<div>.</div>
+		<header class="row widgets justify-content-between">
+			<div class="col-12 col-md-12 col-lg-12">
+				<h1> Gamificación educativa: El Yoguiscoin <img src="img/yoguisyc.png" width="91" height="100" alt=""/></h1>
+				<div>
+					<p>Asignatura: Tecnologia e Informatica - Emprendimiento.</p>
+					<p>Tema: Inversiones por Internet</p>
+					<p>I.E Manuel J. Betancur.</p>				  
+				</div>				
+		  </div>			
+		</header>
+		
+		
+		<div class="container">
+				<div class="row">
+	
+				      <a href="yc.html" class="btn btn-primary my-2">El Yoguiscoin</a>
+					<a href="mejortrader.html" class="btn btn-secondary my-2">Mejor Trader</a>
+					<a href="graficas.html" class="btn btn-primary my-2">Analisis Técnico - Gráficos</a>
+					<a href="calendario.html" class="btn btn-secondary my-2">Analisis Fundamental - Calendario</a>
+					<a href="indicadores.html" class="btn btn-primary my-2">Gestiones - Indicadores</a>
+					<a href="blockchain.html" class="btn btn-primary my-2">Blockchain</a>
+					<a href="videos.html" class="btn btn-primary my-2">Videos</a>
+					
+		</div>
+		
+			
+	<body ng-app="BlockExplorer">
+	<div class="container" ng-controller="MainController">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				<h1 id="page-title">Blockchain - Yoguiscoin</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<form ng-submit="search(searchValue)">
+					<div class="form-group">
+						<input type="text" class="form-control" ng-model="searchValue">
+					</div>
+					<div class="form-group">
+						<select class="form-control" ng-model="searchType">
+							<option value="block">Block Hash</option>
+							<option value="transaction">Transaction ID</option>
+							<option value="address">Address</option>
+						</select>
+					</div>
+					<button
+						type="submit"
+						class="btn btn-primary margin-auto btn-search">
+							Search
+					</button>
+					<p ng-if="!block && !transaction && !addressData && initialSearchMade" class="no-data-text">
+						No data found for search.
+					</p>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+
+				<!-- 'display block' table -->
+				<h3 class="table-title" ng-if="block">Block</h3>
+				<table class="table table-striped" ng-if="block">
+					<tbody>
+						<tr>	
+							<td class="bold">Block Hash</td>
+							<td>{{ block.hash }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Index</td>
+							<td>{{ block.index }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Time Stamp</td>
+							<td>{{ block.timestamp }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Nonce</td>
+							<td>{{ block.nonce }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Previous Hash</td>
+							<td>{{ block.previousBlockHash }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Number Transactions</td>
+							<td>{{ block.transactions.length }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- end 'display block' table -->
+
+				<!-- 'display transaction' table -->
+				<h3 class="table-title" ng-if="transaction">Transaction</h3>
+				<table class="table table-striped" ng-if="transaction">
+					<tbody>
+						<tr>	
+							<td class="bold">Sender</td>
+							<td>{{ transaction.sender }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Recipient</td>
+							<td>{{ transaction.recipient }}</td>
+						</tr>
+						<tr>	
+							<td class="bold">Amount</td>
+							<td>{{ transaction.amount }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- end 'display transaction' table -->
+
+				<!-- 'display address' table -->
+				<h3 class="table-title" ng-if="addressData">Address</h3>
+				<p id="balance-text" ng-if="addressData">(Balance: {{ addressData.addressBalance }})</p>
+				<table class="table table-striped" ng-if="addressData">
+					<thead>
+						<tr>
+							<th scope="col">Sender</th>
+							<th scope="col">Recipient</th>
+							<th scope="col">Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="transaction in addressData.addressTransactions">
+							<td>{{ transaction.sender }}</td>
+							<td>{{ transaction.recipient }}</td>
+							<td>{{ transaction.amount }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- end 'display address' table -->
+
+			</div>
+		</div>
+	</div>
+
+	<script>
+		window.app = angular.module('BlockExplorer', []);
+
+		app.controller('MainController', function($scope, $http) {
+			$scope.block = null;
+			$scope.transaction = null;
+			$scope.addressData = null;
+			$scope.initialSearchMade = false;
+
+			$scope.fetchBlock = function(blockHash) {
+				$http.get(`/block/${blockHash}`)
+				.then(response => {
+					$scope.block = response.data.block;
+					$scope.transaction = null;
+					$scope.addressData = null;
+				});
+			};
+
+			$scope.fetchTransaction = function(transactionId) {
+				$http.get(`/transaction/${transactionId}`)
+				.then(response => {
+					$scope.transaction = response.data.transaction;
+					$scope.block = null;
+					$scope.addressData = null;
+				});				
+			};
+
+			$scope.fetchAddressData = function(address) {
+				$http.get(`/address/${address}`)
+				.then(response => {
+					$scope.addressData = response.data.addressData;
+					if (!$scope.addressData.addressTransactions.length) $scope
+						.addressData = null;
+					$scope.block = null;
+					$scope.transaction = null;
+				});				
+			};
+
+			$scope.search = function(searchValue) {
+				$scope.initialSearchMade = true;
+				if ($scope.searchType === 'block') {
+					$scope.fetchBlock(searchValue);
+				}
+				else if ($scope.searchType === 'transaction') {
+					$scope.fetchTransaction(searchValue);
+				}
+				else if ($scope.searchType === 'address') {
+					$scope.fetchAddressData(searchValue);
+				}
+			};
+
+		});
+	</script>
+
+	<style type="text/css">
+		html, body {
+			min-height: 100vh;
+			background-color: #e8e8e8;
+		}
+		.container {
+			padding-top: 50px;
+			padding-bottom: 50px;
+		}
+		#page-title {
+			text-align: center;
+			margin-bottom: 40px;
+		}
+		.table-title {
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		.table {
+			background-color: #ffffff;
+			box-shadow: 2px 2px 15px -3px rgba(0,0,0,0.75);
+		}
+		#balance-text {
+			text-align: center;
+			margin-top: -20px;
+			margin-bottom: 30px;
+		}
+		.margin-auto {
+			margin: auto;
+			display: block;
+		}
+		.btn-search {
+			margin-bottom: 50px;
+		}
+		.bold {
+			font-weight: 700;
+		}
+		.no-data-text {
+			color: red;
+			text-align: center;
+		}
+	</style>
+		
+		
+
+
+<div class="row mt-3">
+			<div class="col">
+				<button class="btn btn-primary" data-toggle="modal" data-target="#fm-modal">Curso y Redes Sociales</button>
+				<div class="modal fade" id="fm-modal" tabindex="-1" role="dialog" aria-labelledby="fm-modal" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="">Capacitación</h5>
+								<button class="close" data-dismiss="modal" aria-label="Cerrar">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+
+							<div class="modal-body">
+								<ol class="list-unstyled">						
+									
+									<li><a href="https://www.facebook.com/TradersdelJ-356501625035043/?modal=admin_todo_tour" target="_blank">facebook</a></li>
+									<li><a href="https://manuelj.gnomio.com/course/index.php?categoryid=264" target="_blank">Curso en Moodle</a>
+									<p>Entrar como inivitado</p></li>
+									
+								</ol>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+				
+		
+		<div>.</div>
+		
+		<footer class="row widgets justify-content-between">
+			<div class="col-12 col-md-12 col-lg-12">
+				<h1> YC Yoguis - Coin</h1>
+				<H2>Gamificación educativa: El Trading</H2>
+				<p>http://www.iemanueljbetancur.edu.co</p>
+				<p>http://www.losyoguis.com</p>
+			</div>			
+		</footer>		
+		
+		<!--<header class="row">
+			<div class="col">
+				<h1>Calculadora</h1>
+					<form name="calculator">
+						<h3>Pasos para transar YC</h3>
+						<p>
+						<ul>
+							<il>1. Realice ya sea el análisis técnico o fundamnetal.</il>
+							<il>2. Verifique cuanto tiene en saldo.</il>
+							<il>3. Multiplique la cantidad de YC por el precio que usted infiere en el periodo de tiempo atransar.</il>
+							<il>4. Recuerde que no puede invertir mas del 15% de su saldo.</il>
+						</ul>
+						</p>
+						<input type="textfield" name="ans" value="">
+						<br>
+						<input type="button" value="1" onClick="document.calculator.ans.value+='1'">
+						<input type="button" value="2" onClick="document.calculator.ans.value+='2'">
+						<input type="button" value="3" onClick="document.calculator.ans.value+='3'">
+						<input type="button" value="+" onClick="document.calculator.ans.value+='+'">
+						<br>
+						<input type="button" value="4" onClick="document.calculator.ans.value+='4'">
+						<input type="button" value="5" onClick="document.calculator.ans.value+='5'">
+						<input type="button" value="6" onClick="document.calculator.ans.value+='6'">
+						<input type="button" value="-" onClick="document.calculator.ans.value+='-'">
+						<br>
+						<input type="button" value="7" onClick="document.calculator.ans.value+='7'">
+						<input type="button" value="8" onClick="document.calculator.ans.value+='8'">
+						<input type="button" value="9" onClick="document.calculator.ans.value+='9'">
+						<input type="button" value="*" onClick="document.calculator.ans.value+='*'">
+						<br>
+						<input type="button" value="0" onClick="document.calculator.ans.value+='0'">
+						<input type="reset" value="c">
+						<input type="button" value="/" onClick="document.calculator.ans.value+='/'">
+						<input type="button" value="=" onClick="document.calculator.ans.value=eval(document.calculator.ans.value)">
+					</form>
+			</div>			
+		</header> -->
+	
+
+	</div>
+	
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+	
+	
+</html>
